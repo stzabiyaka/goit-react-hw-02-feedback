@@ -20,8 +20,8 @@ export class App extends Component {
 
   countTotalFeedback = () => {
     const values = Object.values(this.state);
-    return values.reduce((accum, current) => {
-      return accum + current;
+    return values.reduce((total, value) => {
+      return total + value;
     }, 0);
   };
 
