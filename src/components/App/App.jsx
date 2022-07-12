@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { PageTitle } from 'components/PageTitle/PageTitle';
-import { Section } from 'components/Section/Section';
-import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
-import { Statistics } from 'components/Satistics/Statistics';
-import { Footer } from 'components/Footer/Footer';
-import { Notification } from 'components/Notification/Notification';
+import { PageTitle } from 'components/PageTitle';
+import { Section } from 'components/Section';
+import { FeedbackOptions } from 'components/FeedbackOptions';
+import { Statistics } from 'components/Satistics';
+import { Footer } from 'components/Footer';
+import { Notification } from 'components/Notification';
 import { Application } from './App.styled';
 
 export class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
   isStatistics = false;
 
-  handleClick = event => {
+  handleClick = option => {
     if (!this.isStatistics) {
       this.isStatistics = true;
     }
-    const name = event.target.dataset.name;
-    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
+    this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
   countTotalFeedback = () => {

@@ -13,8 +13,7 @@ export function FeedbackOptions({ onLeaveFeedback, options }) {
           <ButtonListItem key={option}>
             <FeedbackButton
               type="button"
-              onClick={onLeaveFeedback}
-              data-name={option}
+              onClick={() => onLeaveFeedback(option)}
             >
               {option}
             </FeedbackButton>
