@@ -9,12 +9,8 @@ import { Application } from './App.styled';
 
 export class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
-  isStatistics = false;
 
   handleClick = option => {
-    if (!this.isStatistics) {
-      this.isStatistics = true;
-    }
     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
@@ -30,6 +26,9 @@ export class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positive = this.countPositiveFeedbackPercentage();
     return (
       <Application>
         <PageTitle title="React Homework #02 - Feedback" />
@@ -42,13 +41,13 @@ export class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          {this.isStatistics ? (
+          {total ? (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positive}
             />
           ) : (
             <Notification message="There is no feedback" />
